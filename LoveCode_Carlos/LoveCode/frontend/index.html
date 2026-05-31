@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoveCode — Login</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <h1>❤️ LoveCode</h1>
+  <p class="subtitulo">Donde el código enamora</p>
+
+  <div class="caja">
+    <h2>Iniciar sesión</h2>
+
+    <div id="mensaje" class="mensaje"></div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="carlos@lovecode.com"/>
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" placeholder="••••••••"/>
+
+    <button class="boton" onclick="login()">Entrar</button>
+
+    <p class="enlace-abajo">
+      ¿No tienes cuenta? <a href="registro.html">Regístrate</a>
+    </p>
+  </div>
+
+  <script>
+    const SERVIDOR = 'http://localhost:8080';
+
+    async function login() {
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        mostrarMensaje('Rellena todos los campos', 'error');
+        return;
+      }
+
+      try {
+        const respuesta = await fetch(SERVIDOR + '/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const datos = await respuesta.json();
+
+        if (datos.ok) {
+          sessionStorage.setItem('idSesion', datos.id);
+          window.location.href = 'perfiles.html';
+        } else {
+          mostrarMensaje(datos.error || 'Email o contraseña incorrectos', 'error');
+        }
+      } catch (e) {
+        mostrarMensaje('No se puede conectar con el servidor', 'error');
+      }
+    }
+
+    function mostrarMensaje(texto, tipo) {
+      const div = document.getElementById('mensaje');
+      div.textContent = texto;
+      div.className   = 'mensaje ' + tipo;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+  </script>
+
+</body>
+</html>

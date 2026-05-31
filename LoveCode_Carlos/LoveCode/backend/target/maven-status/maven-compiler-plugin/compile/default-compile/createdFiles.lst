@@ -1,0 +1,6 @@
+com\example\resources\App.class
+com\example\Conexion.class
+com\example\Main.class
+com\example\controller\UsuarioController.class
+com\example\model\Usuario.class
+com\example\repository\UsuarioRepository.class

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="match.xsl"?>
+<match>
+    <fecha>2024-05-22 10:30:00</fecha>
+    <usuario1>
+        <nombre>Carlos Lopez</nombre>
+        <descripcion>Frontend lover, React y CSS.</descripcion>
+        <tecnologias>
+            <tecnologia>CSS</tecnologia>
+            <tecnologia>HTML</tecnologia>
+            <tecnologia>JavaScript</tecnologia>
+            <tecnologia>React</tecnologia>
+        </tecnologias>
+    </usuario1>
+    <usuario2>
+        <nombre>Ana Garcia</nombre>
+        <descripcion>Backend con Java y Spring Boot.</descripcion>
+        <tecnologias>
+            <tecnologia>Git</tecnologia>
+            <tecnologia>Java</tecnologia>
+            <tecnologia>SQL</tecnologia>
+            <tecnologia>Spring Boot</tecnologia>
+        </tecnologias>
+    </usuario2>
+    <tecnologias_comunes>
+        <tecnologia>Git</tecnologia>
+    </tecnologias_comunes>
+</match>
